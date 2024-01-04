@@ -1,7 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include <vector>
-#include "solverlib.h"
+#include "solverlib.hpp"
 
 int main(int argc, char *argv[])
 {
@@ -27,8 +27,9 @@ int main(int argc, char *argv[])
             string line;
             getline(in_fstream, line);
             text_lines.push_back(line);
-            func(text_lines);
         }
+
+        cout << adoc_solver1::sum_text_lines(text_lines) << endl;
     }
 
     return 0;
