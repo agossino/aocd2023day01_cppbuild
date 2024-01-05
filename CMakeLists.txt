@@ -47,7 +47,7 @@ target_link_libraries(
 add_test(
   NAME test_solver1_as_reader
   COMMAND solver1
-  WORKING_DIRECTORY ${aocd2023_01_01_SOURCE_DIR}
+  WORKING_DIRECTORY ${aocd2023_01_SOURCE_DIR}
 )
 
 set_tests_properties(
@@ -58,7 +58,7 @@ set_tests_properties(
 add_test(
   NAME test_solver1_example
   COMMAND solver1 input_example1.txt
-  WORKING_DIRECTORY ${aocd2023_01_01_SOURCE_DIR}
+  WORKING_DIRECTORY ${aocd2023_01_SOURCE_DIR}
 )
 
 set_tests_properties(
@@ -66,6 +66,16 @@ set_tests_properties(
   PROPERTIES PASS_REGULAR_EXPRESSION "^142\n$"
 )
 
+add_test(
+  NAME test_solver1
+  COMMAND solver1 input1.txt
+  WORKING_DIRECTORY ${aocd2023_01_SOURCE_DIR}
+)
+
+set_tests_properties(
+  test_solver1
+  PROPERTIES PASS_REGULAR_EXPRESSION "^53334\n$"
+)
 
 include(GoogleTest)
 gtest_discover_tests(testall)
