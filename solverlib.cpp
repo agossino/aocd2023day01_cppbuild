@@ -8,6 +8,7 @@ using namespace std;
 
 namespace adoc_solver1
 {
+    const char ZERO_CHAR = '0';
 
     int sum_text_lines(const vector<string> vector_str)
     {
@@ -29,22 +30,22 @@ namespace adoc_solver1
 
     int first_digit(const string str)
     {
-        int str_lenght = str.length();
+        int str_length = str.length();
         for (int i = 0; i < str.length(); i++)
         {
             if (isdigit(str[i]))
-                return str[i] - '0';
+                return str[i] - ZERO_CHAR;
         }
         return 0;
     }
 
     int last_digit(const string str)
     {
-        int str_lenght = str.length();
-        for (int i = str_lenght - 1; i >= 0; i--)
+        int str_length = str.length();
+        for (int i = str_length - 1; i >= 0; i--)
         {
             if (isdigit(str[i]))
-                return str[i] - '0';
+                return str[i] - ZERO_CHAR;
         }
         return 0;
     }
