@@ -47,7 +47,7 @@ target_link_libraries(
 add_test(
   NAME test_solver1_as_reader
   COMMAND solver1
-  WORKING_DIRECTORY ${aocd2023_01_01_SOURCE_DIR}
+  WORKING_DIRECTORY ${aocd2023_01_SOURCE_DIR}
 )
 
 set_tests_properties(
