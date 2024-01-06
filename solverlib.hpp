@@ -8,9 +8,14 @@ namespace adoc_solver1
 {
     int sum_text_lines(const std::vector<std::string> vector_str);
 
-    int first_digit(const std::string str);
+    int first_digit(const std::string str, const bool spelled_with_letters = false);
 
-    int last_digit(const std::string str);
+    int last_digit(const std::string str, const bool spelled_with_letters = false);
+}
+
+namespace adoc_solver2
+{
+    int sum_text_lines(const std::vector<std::string> vector_str);
 }
 
 #endif /* SOLVERLIB_H */
