@@ -10,6 +10,7 @@ namespace adoc_solver1
 {
     const char ZERO_CHAR = '0';
     const string DIGITS[] = {"zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"};
+    const int NOTHING_FOUND = -1;
 
     int sum_text_lines(const vector<string> vector_str)
     {
@@ -77,7 +78,7 @@ namespace adoc_solver1
 
             if (numeric_found_at_index == alphabetic_found_at_index) // nothing found: both -1
                 return 0;
-                
+
             if (alphabetic_found_at_index > -1)
                 return alphabetic_found;
             else
@@ -95,12 +96,55 @@ namespace adoc_solver1
     int last_digit(const string str, const bool spelled_with_letters)
     {
         int str_length = str.length();
+        int numeric_found_at_index = -1, numeric_found;
+        int alphabetic_found_at_index = -1, alphabetic_found;
+
         for (int i = str_length - 1; i >= 0; i--)
         {
             if (isdigit(str[i]))
-                return str[i] - ZERO_CHAR;
+            {
+                numeric_found = str[i] - ZERO_CHAR;
+                numeric_found_at_index = i;
+                break;
+            }
         }
-        return 0;
+        if (spelled_with_letters)
+        {
+            for (int i = 0; i < end(DIGITS) - begin(DIGITS); i++)
+            {
+                std::size_t found_at_index = str.find(DIGITS[i]);
+                if (found_at_index != std::string::npos)
+                {
+                    if (alphabetic_found_at_index != NOTHING_FOUND)
+                    {
+                        if (alphabetic_found_at_index < found_at_index)
+                        {
+                            alphabetic_found = i;
+                            alphabetic_found_at_index = found_at_index;
+                        }
+                    }
+                    else
+                    {
+                        alphabetic_found = i;
+                        alphabetic_found_at_index = found_at_index;
+                    }
+                }
+            }
+
+            if (alphabetic_found_at_index < numeric_found_at_index)
+                return numeric_found;
+            else if (numeric_found_at_index < alphabetic_found_at_index)
+                return alphabetic_found;
+            else
+                return 0;
+        }
+        else
+        {
+            if (numeric_found_at_index > -1)
+                return numeric_found;
+            else
+                return 0;
+        }
     }
 }
 
