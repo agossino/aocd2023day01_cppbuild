@@ -67,12 +67,21 @@ namespace adoc_solver1
                 }
             }
 
-            if (numeric_found_at_index > alphabetic_found_at_index)
-                return numeric_found;
-            else if (alphabetic_found_at_index > numeric_found_at_index)
+            if (numeric_found_at_index < alphabetic_found_at_index) // some number has been found ...
+            {
+                if (numeric_found_at_index > -1)
+                    return numeric_found;
+                else
+                    return alphabetic_found;
+            }
+
+            if (numeric_found_at_index == alphabetic_found_at_index) // nothing found: both -1
+                return 0;
+                
+            if (alphabetic_found_at_index > -1)
                 return alphabetic_found;
             else
-                return 0;
+                return numeric_found;
         }
         else
         {

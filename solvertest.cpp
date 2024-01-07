@@ -34,14 +34,17 @@ TEST(FirstDigit, ZeroReturn)
 
 TEST(FirstDigit, OneReturn)
 {
-    EXPECT_EQ(adoc_solver1::first_digit("a1bc"), 1);
+    EXPECT_EQ(adoc_solver1::first_digit("a1beightc"), 1);
     EXPECT_EQ(adoc_solver1::first_digit("a1bc", true), 1);
     EXPECT_EQ(adoc_solver1::first_digit("aonebc", true), 1);
 }
 
 TEST(FirstDigit, OneReturnTwoN)
 {
-    EXPECT_EQ(adoc_solver1::first_digit("1a2"), 1);
+    EXPECT_EQ(adoc_solver1::first_digit("1aone2"), 1);
+    EXPECT_EQ(adoc_solver1::first_digit("a2nine", true), 2);
+    EXPECT_EQ(adoc_solver1::first_digit("threea2", true), 3);
+    EXPECT_EQ(adoc_solver1::first_digit("onfour5two", true), 4);
 }
 
 TEST(FirstDigit, TwoReturnTwoN)
