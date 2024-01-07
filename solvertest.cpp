@@ -50,6 +50,9 @@ TEST(FirstDigit, OneReturnTwoN)
 TEST(FirstDigit, TwoReturnTwoN)
 {
     EXPECT_EQ(adoc_solver1::first_digit("abc21"), 2);
+    EXPECT_EQ(adoc_solver1::first_digit("8abc21"), 8);
+    EXPECT_EQ(adoc_solver1::first_digit("sixabc21", true), 6);
+    EXPECT_EQ(adoc_solver1::first_digit("abceight21", true), 8);
 }
 
 TEST(LastDigit, ZeroReturnEmpty)

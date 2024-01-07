@@ -53,7 +53,7 @@ namespace adoc_solver1
                 {
                     if (alphabetic_found_at_index > -1)
                     {
-                        if (alphabetic_found_at_index < found_at_index)
+                        if (alphabetic_found_at_index > found_at_index)
                         {
                             alphabetic_found = i;
                             alphabetic_found_at_index = found_at_index;
