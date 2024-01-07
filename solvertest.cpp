@@ -128,6 +128,10 @@ TEST(SumTextLines2, OneLineStr)
     EXPECT_EQ(adoc_solver2::sum_text_lines(lines), 22);
     lines = {"querty19"};
     EXPECT_EQ(adoc_solver2::sum_text_lines(lines), 19);
+    lines = {"quesixrty19"};
+    EXPECT_EQ(adoc_solver2::sum_text_lines(lines), 69);
+    lines = {"ninequerty19one9on"};
+    EXPECT_EQ(adoc_solver2::sum_text_lines(lines), 99);
 }
 
 TEST(SumTextLines2, Sum)
@@ -138,48 +142,6 @@ TEST(SumTextLines2, Sum)
     EXPECT_EQ(adoc_solver2::sum_text_lines(lines), 62);
     lines = {"1querty19", "0Ooooh!1"};
     EXPECT_EQ(adoc_solver2::sum_text_lines(lines), 20);
+    lines = {"one5quertythree9", "alzeroOoooh!1thre"};
+    EXPECT_EQ(adoc_solver2::sum_text_lines(lines), 20);
 }
-// TEST(FirstDigit2, ZeroReturnEmpty)
-// {
-//     EXPECT_EQ(adoc_solver2::first_digit(""), 0);
-// }
-
-// TEST(FirstDigit2, ZeroReturn)
-// {
-//     EXPECT_EQ(adoc_solver2::first_digit("abc"), 0);
-// }
-
-// TEST(FirstDigit2, OneReturn)
-// {
-//     EXPECT_EQ(adoc_solver2::first_digit("a1bc"), 1);
-// }
-
-// TEST(FirstDigit2, OneReturnTwoN)
-// {
-//     EXPECT_EQ(adoc_solver2::first_digit("1a2"), 1);
-// }
-
-// TEST(FirstDigit2, TwoReturnTwoN)
-// {
-//     EXPECT_EQ(adoc_solver2::first_digit("abc21"), 2);
-// }
-
-// TEST(LastDigit2, ZeroReturnEmpty)
-// {
-//     EXPECT_EQ(adoc_solver2::last_digit(""), 0);
-// }
-
-// TEST(LastDigit2, ZeroReturn)
-// {
-//     EXPECT_EQ(adoc_solver2::last_digit("abc"), 0);
-// }
-
-// TEST(LastDigit2, OneReturn)
-// {
-//     EXPECT_EQ(adoc_solver2::last_digit("a1bc"), 1);
-// }
-
-// TEST(LastDigit2, TwoReturnTwoN)
-// {
-//     EXPECT_EQ(adoc_solver2::last_digit("1b2"), 2);
-// }

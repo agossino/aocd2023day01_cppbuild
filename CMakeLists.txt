@@ -29,12 +29,22 @@ add_executable(
 )
 
 add_executable(
+  solver2
+  solver2.cpp
+)
+
+add_executable(
   testall
   solvertest.cpp
 )
 
 target_link_libraries(
   solver1
+  solverobj
+)
+
+target_link_libraries(
+  solver2
   solverobj
 )
 
@@ -75,6 +85,17 @@ add_test(
 set_tests_properties(
   test_solver1
   PROPERTIES PASS_REGULAR_EXPRESSION "^53334\n$"
+)
+
+add_test(
+  NAME test_solver2_example
+  COMMAND solver2 input_example2.txt
+  WORKING_DIRECTORY ${aocd2023_01_SOURCE_DIR}
+)
+
+set_tests_properties(
+  test_solver2_example
+  PROPERTIES PASS_REGULAR_EXPRESSION "^281\n$"
 )
 
 include(GoogleTest)
