@@ -78,7 +78,7 @@ set_tests_properties(
 
 add_test(
   NAME test_solver1
-  COMMAND solver1 input1.txt
+  COMMAND solver1 input.txt
   WORKING_DIRECTORY ${aocd2023_01_SOURCE_DIR}
 )
 
@@ -96,6 +96,17 @@ add_test(
 set_tests_properties(
   test_solver2_example
   PROPERTIES PASS_REGULAR_EXPRESSION "^281\n$"
+)
+
+add_test(
+  NAME test_solver2
+  COMMAND solver2 input.txt
+  WORKING_DIRECTORY ${aocd2023_01_SOURCE_DIR}
+)
+
+set_tests_properties(
+  test_solver2
+  PROPERTIES PASS_REGULAR_EXPRESSION "^52834\n$"
 )
 
 include(GoogleTest)
