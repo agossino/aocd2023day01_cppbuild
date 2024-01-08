@@ -3,6 +3,7 @@
 #include <vector>
 #include <string>
 #include "solverlib.hpp"
+#include <iostream>
 
 using namespace std;
 
@@ -93,6 +94,19 @@ namespace adoc_solver1
         }
     }
 
+    size_t find_last_match(const string str, const string to_find)
+    {
+        size_t last_match = std::string::npos;
+        size_t position = 0;
+
+        while ((position = str.find(to_find, position)) !=  std::string::npos)
+        {
+            last_match = position;
+            position += 1;
+        }
+        return last_match;
+    }
+
     int last_digit(const string str, const bool spelled_with_letters)
     {
         int str_length = str.length();
@@ -112,7 +126,7 @@ namespace adoc_solver1
         {
             for (int i = 0; i < end(DIGITS) - begin(DIGITS); i++)
             {
-                std::size_t found_at_index = str.find(DIGITS[i]);
+                std::size_t found_at_index = find_last_match(str, DIGITS[i]);
                 if (found_at_index != std::string::npos)
                 {
                     if (alphabetic_found_at_index != NOTHING_FOUND)
