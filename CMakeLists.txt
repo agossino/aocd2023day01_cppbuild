@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.14)
 project(aocd2023_01 VERSION 1.0)
 
 # GoogleTest requires at least C++14
-set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 
@@ -24,28 +24,18 @@ add_library(
 )
 
 add_executable(
-  solver1
-  solver1.cpp
+  solver
+  solver.cpp
 )
 
-add_executable(
-  solver2
-  solver2.cpp
+target_link_libraries(
+  solver
+  solverobj
 )
 
 add_executable(
   testall
   solvertest.cpp
-)
-
-target_link_libraries(
-  solver1
-  solverobj
-)
-
-target_link_libraries(
-  solver2
-  solverobj
 )
 
 target_link_libraries(
@@ -55,19 +45,19 @@ target_link_libraries(
 )
 
 add_test(
-  NAME test_solver1_as_reader
-  COMMAND solver1
+  NAME test_solver_as_reader
+  COMMAND solver --help
   WORKING_DIRECTORY ${aocd2023_01_SOURCE_DIR}
 )
 
 set_tests_properties(
-  test_solver1_as_reader
-  PROPERTIES PASS_REGULAR_EXPRESSION "Advent of Code solver"
+  test_solver_as_reader
+  PROPERTIES PASS_REGULAR_EXPRESSION "Advent of code 2023 day 1 solver"
 )
 
 add_test(
   NAME test_solver1_example
-  COMMAND solver1 input_example1.txt
+  COMMAND solver input_example1.txt
   WORKING_DIRECTORY ${aocd2023_01_SOURCE_DIR}
 )
 
@@ -78,7 +68,7 @@ set_tests_properties(
 
 add_test(
   NAME test_solver1
-  COMMAND solver1 input.txt
+  COMMAND solver input.txt
   WORKING_DIRECTORY ${aocd2023_01_SOURCE_DIR}
 )
 
@@ -89,7 +79,7 @@ set_tests_properties(
 
 add_test(
   NAME test_solver2_example
-  COMMAND solver2 input_example2.txt
+  COMMAND solver -a input_example2.txt
   WORKING_DIRECTORY ${aocd2023_01_SOURCE_DIR}
 )
 
@@ -100,7 +90,7 @@ set_tests_properties(
 
 add_test(
   NAME test_solver2
-  COMMAND solver2 input.txt
+  COMMAND solver -a input.txt
   WORKING_DIRECTORY ${aocd2023_01_SOURCE_DIR}
 )
 
