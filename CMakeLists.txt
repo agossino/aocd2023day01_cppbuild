@@ -5,99 +5,18 @@ project(aocd2023_01 VERSION 1.0)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-
-include(FetchContent)
-FetchContent_Declare(
-  googletest
-  DOWNLOAD_EXTRACT_TIMESTAMP
-  URL https://github.com/google/googletest/archive/dddb219c3eb96d7f9200f09b0a381f016e6b4562.zip
-)
-
-FetchContent_MakeAvailable(googletest)
-
-enable_testing()
-
 add_library(
   solverobj
   OBJECT
-  solverlib.cpp
+  source/solverlib.cpp
 )
 
 add_executable(
   solver
-  solver.cpp
+  source/solver.cpp
 )
 
 target_link_libraries(
   solver
   solverobj
 )
-
-add_executable(
-  testall
-  solvertest.cpp
-)
-
-target_link_libraries(
-  testall
-  solverobj
-  GTest::gtest_main
-)
-
-add_test(
-  NAME test_solver_as_reader
-  COMMAND solver --help
-  WORKING_DIRECTORY ${aocd2023_01_SOURCE_DIR}
-)
-
-set_tests_properties(
-  test_solver_as_reader
-  PROPERTIES PASS_REGULAR_EXPRESSION "Advent of code 2023 day 1 solver"
-)
-
-add_test(
-  NAME test_solver1_example
-  COMMAND solver input_example1.txt
-  WORKING_DIRECTORY ${aocd2023_01_SOURCE_DIR}
-)
-
-set_tests_properties(
-  test_solver1_example
-  PROPERTIES PASS_REGULAR_EXPRESSION "^142\n$"
-)
-
-add_test(
-  NAME test_solver1
-  COMMAND solver input.txt
-  WORKING_DIRECTORY ${aocd2023_01_SOURCE_DIR}
-)
-
-set_tests_properties(
-  test_solver1
-  PROPERTIES PASS_REGULAR_EXPRESSION "^53334\n$"
-)
-
-add_test(
-  NAME test_solver2_example
-  COMMAND solver -a input_example2.txt
-  WORKING_DIRECTORY ${aocd2023_01_SOURCE_DIR}
-)
-
-set_tests_properties(
-  test_solver2_example
-  PROPERTIES PASS_REGULAR_EXPRESSION "^281\n$"
-)
-
-add_test(
-  NAME test_solver2
-  COMMAND solver -a input.txt
-  WORKING_DIRECTORY ${aocd2023_01_SOURCE_DIR}
-)
-
-set_tests_properties(
-  test_solver2
-  PROPERTIES PASS_REGULAR_EXPRESSION "^52834\n$"
-)
-
-include(GoogleTest)
-gtest_discover_tests(testall)
