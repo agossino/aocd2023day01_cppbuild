@@ -52,6 +52,7 @@ target_link_libraries(
   solverobj
 )
 
+# Integration Tests
 add_test(
   NAME test_solver_as_reader
   COMMAND solver --help
@@ -74,6 +75,17 @@ set_tests_properties(
 )
 
 add_test(
+  NAME test_solver1_example_part
+  COMMAND solver --part 1 input_example1.txt
+  WORKING_DIRECTORY ${testaocd2023_01_SOURCE_DIR}/input_files/
+)
+
+set_tests_properties(
+  test_solver1_example_part
+  PROPERTIES PASS_REGULAR_EXPRESSION "^142\n$"
+)
+
+add_test(
   NAME test_solver1
   COMMAND solver input.txt
   WORKING_DIRECTORY ${testaocd2023_01_SOURCE_DIR}/input_files/
@@ -86,7 +98,7 @@ set_tests_properties(
 
 add_test(
   NAME test_solver2_example
-  COMMAND solver -a input_example2.txt
+  COMMAND solver -p 2 input_example2.txt
   WORKING_DIRECTORY ${testaocd2023_01_SOURCE_DIR}/input_files/
 )
 
@@ -97,7 +109,7 @@ set_tests_properties(
 
 add_test(
   NAME test_solver2
-  COMMAND solver -a input.txt
+  COMMAND solver --part 2 input.txt
   WORKING_DIRECTORY ${testaocd2023_01_SOURCE_DIR}/input_files/
 )
 
@@ -106,6 +118,7 @@ set_tests_properties(
   PROPERTIES PASS_REGULAR_EXPRESSION "^52834\n$"
 )
 
+# End Integration Tests
 include(GoogleTest)
 gtest_discover_tests(testall)
 

@@ -55,7 +55,7 @@ namespace adoc_solver
 
     void LineOfText::search_numeric_digits()
     {
-        for (int i = 0; i < line_of_text.length(); i++)
+        for (int i = 0; i < int (line_of_text.length()); i++)
         {
             if (isdigit(line_of_text[i]))
             {
@@ -68,7 +68,7 @@ namespace adoc_solver
     {
         std::size_t position = 0;
 
-        for (int i = 0; i < size(DIGITS); i++)
+        for (int i = 0; i < int (size(DIGITS)); i++)
         {
             while ((position = line_of_text.find(DIGITS[i], position)) != std::string::npos)
             {
